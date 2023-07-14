@@ -1,0 +1,18 @@
+
+
+  {{#if posts.length}}
+  <section>
+    <h2>Your Dashboard</h2>
+
+    {{#each posts as |post|}}
+      <h3><a href="/dashboard/edit/{{post.id}}"></a>{{title}}</h3>
+    {{/each}}
+
+  </section>
+  {{/if}}
+
+  <footer>
+    <button type="submit" id="add-btn"><a href="/dashboard/new">New Post</a></button>
+  </footer>
+
+<script src="./js/new-post.js"></script>

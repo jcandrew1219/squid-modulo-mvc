@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['name'],
+          attributes: ['username'],
         },
         {
           model: Comment,
@@ -30,9 +30,7 @@ router.get('/', async (req, res) => {
     // Pass serialized data and session flag into template
     res.render('homepage', { 
       posts, 
-      logged_in: req.session.logged_in,
-      username: req.session.username,
-      user_id: req.session.user_id
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -67,9 +65,7 @@ router.get('/post/:id', async (req, res) => {
       console.log(post);
       res.render('single-post', {
         post,
-        logged_in: req.session.logged_in,
-        username: req.session.username,
-        user_id: req.session.user_id
+        logged_in: req.session.logged_in
       });
     } else {
       res.status(404).json({message: "No post found with requested id."});

@@ -16,11 +16,11 @@ router.get('/', async (req, res) => {
   }
 });
 
-//get all comments from one post
+//get one comment
 router.get('/:id', async (req, res) => {
   try {
     const commentData = await Comment.findAll({
-      where: { post_id: req.params.id}
+      where: {id: req.params.id}
     });
     if (!commentData) {
       res.status(404).json({ message: "Requested post has no comments."});

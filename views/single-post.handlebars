@@ -1,0 +1,13 @@
+{{> post-details}}
+
+{{#if logged_in}}
+<form class="comment-form">
+  <textarea id="comment-input"></textarea>
+  <button type="submit">Add Comment</button> <!-- add css class-->
+</form>
+{{/if}}
+
+{{>comments}}
+
+<script src="./../public/js/comment.js"></script>
+
