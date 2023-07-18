@@ -10,28 +10,23 @@
 </head>
 
 <body>
-  <div class="wrapper">
-    <header class="display-flex justify-space-between p-2">
-      
-      <a href="/">Home</a>
-      
+  <div class="flex-column justify-flex-start min-100-vh">
+    <header>
       <nav>
+        <a href="/">Home</a>
+      
         {{#if logged_in}}
-        <a href="/dashboard">Dashboard</a> |
-        <button class="no-button" id="logout">Logout</button>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
         {{else}}
         <a href="/login">Login</a>
         {{/if}}
       </nav>
+
+      <h1>The Tech Blog</h1>
     </header>
 
-    <div class="title-row">
-      <div class="title-container">
-        <h1>The Tech Blog</h1>
-      </div>
-    </div>
-
-    <main class="container container-fluid mt-5">
+    <main>
       {{{ body }}}
     </main>
   </div>

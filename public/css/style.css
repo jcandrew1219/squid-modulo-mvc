@@ -1,5 +1,61 @@
-header{
+:root {
+  --primary: #CBDBD2;
+  --secondary: #778289d5;
+  --dark: #470313;
+}
+
+body {
+  background-color: var(--primary);
+  box-sizing: border-box;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+header {
   border-bottom: 1px solid black;
+  background-color: var(--dark);
+  color: var(--primary); 
+  padding: 20px 40px;
+  display: block;
+}
+nav{
+  background-color: var(--dark);
+  display: flex;
+}
+
+nav a{
+  color: var(--primary);
+  padding: 5px 40px 20px 0px;
+}
+
+h1 {
+  background-color: var(--primary);
+  color: var(--dark);
+  box-shadow: 10px 5px var(--secondary);
+  border-radius: 10px;
+  padding: 3px 20px;
+  display: inline-block;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  
+  flex: 1;
+}
+
+.signup-header,
+.login-header {
+  padding: 10px 10px 0px 10px; 
+}
+
+.signup-section,
+.login-section {
+  width: 95%;
+  border: 5px solid var(--dark);
+  border-radius: 3px;
+  margin: 20px;
 }
 
 .no-button {
@@ -17,8 +73,3 @@ header{
   text-decoration: underline;
 }
 
-.dollar-amount {
-  color: #056605;
-  font-weight: bold;
-  margin-left: -5px;
-}

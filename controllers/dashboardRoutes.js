@@ -6,7 +6,7 @@ router.get('/', withAuth, async (req, res) => {
     try {
       const postData = await Post.findAll({
         where: {user_id: req.session.user_id},
-        attributes: ['id', 'title', 'content', 'created_at'],
+        attributes: ['id', 'title', 'content'],
         include: [
           {
             model: User,
@@ -14,7 +14,7 @@ router.get('/', withAuth, async (req, res) => {
           },
           {
             model: Comment,
-            attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
+            attributes: ['id', 'comment', 'post_id', 'user_id'],
             include: {
               model: User,
               attributes: ['username']
@@ -39,7 +39,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findOne({
       where: {id: req.params.id},
-      attributes: ['id', 'title', 'content', 'created_at'],
+      attributes: ['id', 'title', 'content'],
       include: [
         {
           model: User,
@@ -47,7 +47,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
+          attributes: ['id', 'comment', 'post_id', 'user_id'],
           include: {
             model: User,
             attributes: ['username']
