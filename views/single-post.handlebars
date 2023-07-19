@@ -1,13 +1,24 @@
-{{> post-details}}
+{{> post-details post}}
 
 {{#if logged_in}}
-<form class="comment-form">
-  <textarea id="comment-input"></textarea>
-  <button type="submit" id="comment-btn">Add Comment</button> <!-- add css class-->
-</form>
+<section class="card-section">
+  <form class="comment-form">
+    <div>
+      <label for="comment-input">Add comment here...</label>
+      <textarea class="w-100" id="comment-input"></textarea>
+    </div>
+    <div>
+      <button type="submit" id="comment-btn">Add Comment</button>
+    </div>
+  </form>
+</section>
 {{/if}}
 
-{{>comments}}
+{{#if post.comments.length}}
+  {{#each post.comments as |comment|}}
+    {{>comment-details}}
+  {{/each}}
+{{/if}}
 
-<script src="./../public/js/comment.js"></script>
+<script src="./../js/comment.js"></script>
 

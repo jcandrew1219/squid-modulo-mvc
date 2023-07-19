@@ -1,14 +1,13 @@
-const deleteFormHandler = async (event) => {
+const deleteHandler = async (event) => {
     event.preventDefault();
   
     const postId = window.location.toString().split('/')
     [window.location.toString().split('/').length - 1];
   
-    if (title && content) {
+    if (postId) {
       const response = await fetch(`/api/post/${postId}`, {
         method: 'DELETE',
-        body: JSON.stringify({ title, content }),
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' }
       });
   
       if (response.ok) {
@@ -20,5 +19,5 @@ const deleteFormHandler = async (event) => {
   };
 
   document
-  .querySelector('.dlt-btn')
-  .addEventListener('submit', editFormHandler);
+  .querySelector('#dlt-btn')
+  .addEventListener('click', deleteHandler);

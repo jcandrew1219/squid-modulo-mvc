@@ -6,7 +6,7 @@ router.get('/', withAuth, async (req, res) => {
     try {
       const postData = await Post.findAll({
         where: {user_id: req.session.user_id},
-        attributes: ['id', 'title', 'content'],
+        attributes: ['id', 'title', 'content', 'created_At'],
         include: [
           {
             model: User,
@@ -14,7 +14,7 @@ router.get('/', withAuth, async (req, res) => {
           },
           {
             model: Comment,
-            attributes: ['id', 'comment', 'post_id', 'user_id'],
+            attributes: ['id', 'comment', 'post_id', 'user_id', 'created_At'],
             include: {
               model: User,
               attributes: ['username']
@@ -37,9 +37,8 @@ router.get('/', withAuth, async (req, res) => {
 
 router.get('/edit/:id', withAuth, async (req, res) => {
   try {
-    const postData = await Post.findOne({
-      where: {id: req.params.id},
-      attributes: ['id', 'title', 'content'],
+    const postData = await Post.findByPk(req.params.id, {
+      attributes: ['id', 'title', 'content', 'created_At'],
       include: [
         {
           model: User,
@@ -47,7 +46,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['id', 'comment', 'post_id', 'user_id'],
+          attributes: ['id', 'comment', 'post_id', 'user_id', 'created_At'],
           include: {
             model: User,
             attributes: ['username']
@@ -56,7 +55,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
       ],
     });
 
-      const post = postData.map((post) => post.get({ plain: true }));
+    const post = postData.get({ plain: true });
       console.log(post);
 
       res.render('edit-post', { 
@@ -64,6 +63,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
           logged_in: req.session.logged_in
         });
       } catch (err) {
+        console.log(err);
         res.status(500).json(err);
       }
 });

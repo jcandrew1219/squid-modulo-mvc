@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 //get one comment
 router.get('/:id', async (req, res) => {
   try {
-    const commentData = await Comment.findAll({
+    const commentData = await Comment.findByPk({
       where: {id: req.params.id}
     });
     if (!commentData) {
@@ -48,11 +48,7 @@ router.post('/', withAuth, async (req, res) => {
 
 router.delete('/:id', withAuth, async (req, res) => {
   try {
-    const commentData = await Comment.destroy({
-      where: {
-        id: req.params.id
-      }
-    });
+    const commentData = await Comment.destroy(req.params.id);
 
     if (!commentData) {
       res.status(404).json({ message: 'Requested comment id not found.'});

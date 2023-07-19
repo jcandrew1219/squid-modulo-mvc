@@ -11,13 +11,13 @@
 
 <body>
   <div class="flex-column justify-flex-start min-100-vh">
-    <header>
+    <header class="mb-3">
       <nav>
         <a href="/">Home</a>
       
         {{#if logged_in}}
         <a href="/dashboard">Dashboard</a>
-        <a href="/logout">Logout</a>
+        <a id="logout" href="/logout">Logout</a>
         {{else}}
         <a href="/login">Login</a>
         {{/if}}

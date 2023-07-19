@@ -1,9 +1,9 @@
-<section class="post-container">
-    <header class="post-header">
-        <a href="/post/{{id}}">{{title}}</a>
-        <p class="subtitle">Posted by {{user.username}} on {{format_date}}</p>
+<section class="card-section">
+    <header class="card-header">
+        <h4><a href="/post/{{id}}">{{title}}</a></h4>
+        <p>Posted by {{user.username}} on {{format_date created_At}}</p>
     </header>
-    <section>
+    <section class="home-post-content">
         <p>{{content}}</p>
     </section>
 </section>

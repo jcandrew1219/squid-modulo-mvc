@@ -22,5 +22,5 @@ const editFormHandler = async (event) => {
   };
 
   document
-  .querySelector('.edit-btn')
+  .querySelector('.edit-form')
   .addEventListener('submit', editFormHandler);
